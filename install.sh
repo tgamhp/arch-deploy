@@ -114,9 +114,9 @@ echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 cd /home/$user_name/
 
 # Installing Paru (AUR Helper)
-su $user_name -c git clone https://aur.archlinux.org/paru.git
+su $user_name -c "git clone https://aur.archlinux.org/paru.git"
 cd paru
-su $user_name -c makepkg -si
+su $user_name -c "makepkg -si"
 cd ..
 rm -r paru
 
@@ -124,7 +124,7 @@ rm -r paru
 cp /arch-deploy/aur.md .
 
 # Installing packages included in aur.md
-su $user_name -c paru -S --needed --skipreview $(cat aur.md | sed '/^\#/d' | sed '/^$/d' | tr '\n' ' ')
+su $user_name -c "paru -S --needed --skipreview $(cat aur.md | sed '/^\#/d' | sed '/^$/d' | tr '\n' ' ')"
 
 # Return to root
 exit
