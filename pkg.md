@@ -91,6 +91,7 @@ fcitx5-qt
 granite
 gcolor3
 gtk4
+xdg-desktop-portal-gtk
 
 # Wallpapers
 archlinux-wallpaper
@@ -109,7 +110,7 @@ noto-fonts-cjk
 noto-fonts-extra
 noto-fonts-emoji
 ttf-nerd-fonts-symbols
-ttf-liberation (needed for steam)
+ttf-liberation
 ttf-dejavu
 wqy-zenhei
 
@@ -119,7 +120,7 @@ libreoffice-fresh
 firejail
 emacs
 keepassxc
-steam
+#steam
 xed
 grub-customizer
 gparted

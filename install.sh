@@ -4,7 +4,7 @@
 ###############################
 
 # Sync time online
-timedatectl set-ntp enable
+timedatectl set-ntp true
 
 # Refreshing pacman
 pacman -Syyy
@@ -22,7 +22,7 @@ rm tmp_root_pass
 # hostname
 dialog --no-cancel --inputbox "Hostname:" 10 50 2>tmp_host_name
 clear
-hostname= $(cat tmp_host_name) 
+hostname=$(cat tmp_host_name)
 rm tmp_host_name
 echo $hostname >> /etc/hostname
 
@@ -84,9 +84,6 @@ pip3 install system-monitoring-center
 #Img to PDF converter
 pip3 install img2pdf
 
-# Setting alacritty as default terminal emulator
-gsettings set org.cinnamon.desktop.default-applications.terminal exec alacritty
-
 # Allowing kdeconnect through the firewall
 ufw allow 1714:1764/udp
 ufw allow 1714:1764/tcp
@@ -117,6 +114,7 @@ echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 su $user_name
 
 # Copying aur.md from root
+cd
 cp /aur.md .
 
 # Installing Paru (AUR Helper)
@@ -127,7 +125,7 @@ cd ..
 rm -r paru
 
 # Installing packages included in aur.md
-paru -S --needed --skipreview $(cat aur-pkg.md | sed '/^\#/d' | sed '/^$/d' | tr '\n' ' ')
+paru -S --needed --skipreview $(cat aur.md | sed '/^\#/d' | sed '/^$/d' | tr '\n' ' ')
 
 # Return to root
 exit

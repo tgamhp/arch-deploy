@@ -12,9 +12,9 @@ flatseal
 pasystray-git
 
 # Programs
-timeshift
+timeshift-bin
 vscodium-bin
 teams
-tenacity
+tenacity-git
 kotatogram-desktop-dynamic-bin
 anki-bin
