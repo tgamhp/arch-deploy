@@ -110,22 +110,21 @@ rm tmp_user_password
 # Adding the wheel members to sudo
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
-# Changing to user
-su $user_name
-
-# Copying aur.md from root
-cd
-cp /aur.md .
+# Changing to user directory
+cd /home/$user_name/
 
 # Installing Paru (AUR Helper)
-git clone https://aur.archlinux.org/paru.git
+su $user_name -c git clone https://aur.archlinux.org/paru.git
 cd paru
-makepkg -si
+su $user_name -c makepkg -si
 cd ..
 rm -r paru
 
+# Copying aur.md from root
+cp /arch-deploy/aur.md .
+
 # Installing packages included in aur.md
-paru -S --needed --skipreview $(cat aur.md | sed '/^\#/d' | sed '/^$/d' | tr '\n' ' ')
+su $user_name -c paru -S --needed --skipreview $(cat aur.md | sed '/^\#/d' | sed '/^$/d' | tr '\n' ' ')
 
 # Return to root
 exit
