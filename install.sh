@@ -1,6 +1,6 @@
 #!/bin/sh
 ###############################
-# Author: Ahmed Maher
+# Script Author: Ahmed Maher
 ###############################
 
 # Sync time online
@@ -109,22 +109,6 @@ rm tmp_user_password
 
 # Adding the wheel members to sudo
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
-
-# Changing to user directory
-cd /home/$user_name/
-
-# Installing Paru (AUR Helper)
-su $user_name -c "git clone https://aur.archlinux.org/paru.git"
-cd paru
-makepkg -si
-cd ..
-rm -r paru
-
-# Copying aur.md from root
-cp /arch-deploy/aur.md .
-
-# Installing packages included in aur.md
-su $user_name -c "paru -S --needed --skipreview $(cat aur.md | sed '/^\#/d' | sed '/^$/d' | tr '\n' ' ')"
 
 # Return to root
 exit
