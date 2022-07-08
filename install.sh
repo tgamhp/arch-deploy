@@ -116,7 +116,7 @@ cd /home/$user_name/
 # Installing Paru (AUR Helper)
 su $user_name -c "git clone https://aur.archlinux.org/paru.git"
 cd paru
-su $user_name -c "makepkg -si"
+makepkg -si
 cd ..
 rm -r paru
 
